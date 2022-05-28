@@ -1,0 +1,435 @@
+{
+	"info": {
+		"_postman_id": "ca022087-6902-4c60-ae80-5d861915343c",
+		"name": "RegistrationFormTestAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "registration",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"response status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"type of response\", function(){\r",
+							"    pm.expect(jsonData.result).to.be.a(\"string\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response body should be match!\", function () {\r",
+							"    pm.expect(pm.response.text()).to.have.include('Registration successfully.');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response with body!\", function () {\r",
+							"    pm.response.to.be.withBody;\r",
+							"    pm.response.to.not.be.error; \r",
+							"    pm.response.to.have.jsonBody(\"result\"); \r",
+							"    pm.response.to.not.have.jsonBody(\"error\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmaXJzdE5hbWUiOiJETkFTeW5jIiwibGFzdE5hbWUiOiJBZG1pbiIsInJvbGUiOiJTRE5BX0FkbWluVXNlciIsIm5hbWUiOiJETkFTeW5jIEFkbWluIiwiZ3JvdXBzIjpbXSwidmFsaWRpdHkiOjAsInVzZXIiOiJhZG1pbiIsInRpbWVzdGFtcCI6MTYxMzU3MzE2OTc3MH0.fpowd7Y1MWGxQovHf7QfWOomojiQAI1AQvkDuI2yGnU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"neha\",\r\n    \"email\": \"neha.yadav@alvisoftware.com\",\r\n    \"password\": \"neha23486@rrt\",\r\n    \"phone_number\": 5465567988\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{DNASERVER_IPHOST}}:{{DNASERVER_PORT}}/signup",
+					"host": [
+						"{{DNASERVER_IPHOST}}"
+					],
+					"port": "{{DNASERVER_PORT}}",
+					"path": [
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "registration with miss fields",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"response status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response body should be match!\", function () {\r",
+							"    pm.expect(pm.response.text()).to.have.include(\"result\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmaXJzdE5hbWUiOiJETkFTeW5jIiwibGFzdE5hbWUiOiJBZG1pbiIsInJvbGUiOiJTRE5BX0FkbWluVXNlciIsIm5hbWUiOiJETkFTeW5jIEFkbWluIiwiZ3JvdXBzIjpbXSwidmFsaWRpdHkiOjAsInVzZXIiOiJhZG1pbiIsInRpbWVzdGFtcCI6MTYxMzU3MzE2OTc3MH0.fpowd7Y1MWGxQovHf7QfWOomojiQAI1AQvkDuI2yGnU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"neha\",\r\n    \"email\": \"ny213yadv@gmail.com\",\r\n    \"phone_number\": \"5465567927\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{DNASERVER_IPHOST}}:{{DNASERVER_PORT}}/signup",
+					"host": [
+						"{{DNASERVER_IPHOST}}"
+					],
+					"port": "{{DNASERVER_PORT}}",
+					"path": [
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "registration with bad parameters",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"response status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response body should be match!\", function () {\r",
+							"    pm.expect(pm.response.text()).to.have.include(\"result\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmaXJzdE5hbWUiOiJETkFTeW5jIiwibGFzdE5hbWUiOiJBZG1pbiIsInJvbGUiOiJTRE5BX0FkbWluVXNlciIsIm5hbWUiOiJETkFTeW5jIEFkbWluIiwiZ3JvdXBzIjpbXSwidmFsaWRpdHkiOjAsInVzZXIiOiJhZG1pbiIsInRpbWVzdGFtcCI6MTYxMzU3MzE2OTc3MH0.fpowd7Y1MWGxQovHf7QfWOomojiQAI1AQvkDuI2yGnU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"neha\",\r\n    \"email\": \"ny213ydv@gmail.com\",\r\n    \"passwor\": \"neha23486@rrt\",\r\n    \"phone_number\": \"5465567927\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{DNASERVER_IPHOST}}:{{DNASERVER_PORT}}/signup",
+					"host": [
+						"{{DNASERVER_IPHOST}}"
+					],
+					"port": "{{DNASERVER_PORT}}",
+					"path": [
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "upload file",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"response status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"type of response\", function(){\r",
+							"    pm.expect(jsonData.result).to.be.a(\"string\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response body should be match!\", function () {\r",
+							"    pm.expect(pm.response.text()).to.have.include('fileuploaded successfully.');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmaXJzdE5hbWUiOiJETkFTeW5jIiwibGFzdE5hbWUiOiJBZG1pbiIsInJvbGUiOiJTRE5BX0FkbWluVXNlciIsIm5hbWUiOiJETkFTeW5jIEFkbWluIiwiZ3JvdXBzIjpbXSwidmFsaWRpdHkiOjAsInVzZXIiOiJhZG1pbiIsInRpbWVzdGFtcCI6MTYxMzU3MzE2OTc3MH0.fpowd7Y1MWGxQovHf7QfWOomojiQAI1AQvkDuI2yGnU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "profile",
+							"type": "file",
+							"src": "/C:/Users/Alvi/Downloads/appStore.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{DNASERVER_IPHOST}}:{{DNASERVER_PORT}}/uploadfile/61a704b6daf587c224dbfc5b",
+					"host": [
+						"{{DNASERVER_IPHOST}}"
+					],
+					"port": "{{DNASERVER_PORT}}",
+					"path": [
+						"uploadfile",
+						"61a704b6daf587c224dbfc5b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "upload file with  miss file",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"response status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"type of response\", function(){\r",
+							"    pm.expect(jsonData.result).to.be.a(\"string\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response body should be match!\", function () {\r",
+							"    pm.expect(pm.response.text()).to.have.include(\"Proble with sending data!\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmaXJzdE5hbWUiOiJETkFTeW5jIiwibGFzdE5hbWUiOiJBZG1pbiIsInJvbGUiOiJTRE5BX0FkbWluVXNlciIsIm5hbWUiOiJETkFTeW5jIEFkbWluIiwiZ3JvdXBzIjpbXSwidmFsaWRpdHkiOjAsInVzZXIiOiJhZG1pbiIsInRpbWVzdGFtcCI6MTYxMzU3MzE2OTc3MH0.fpowd7Y1MWGxQovHf7QfWOomojiQAI1AQvkDuI2yGnU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "profile",
+							"type": "file",
+							"src": []
+						}
+					]
+				},
+				"url": {
+					"raw": "{{DNASERVER_IPHOST}}:{{DNASERVER_PORT}}/uploadfile/61a61c23756dfe8ea72ddca3",
+					"host": [
+						"{{DNASERVER_IPHOST}}"
+					],
+					"port": "{{DNASERVER_PORT}}",
+					"path": [
+						"uploadfile",
+						"61a61c23756dfe8ea72ddca3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "upload file with large size",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"response status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"type of response\", function(){\r",
+							"    pm.expect(jsonData.result).to.be.a(\"string\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response body should be match!\", function () {\r",
+							"    pm.expect(pm.response.text()).to.have.include(\"File too large!\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmaXJzdE5hbWUiOiJETkFTeW5jIiwibGFzdE5hbWUiOiJBZG1pbiIsInJvbGUiOiJTRE5BX0FkbWluVXNlciIsIm5hbWUiOiJETkFTeW5jIEFkbWluIiwiZ3JvdXBzIjpbXSwidmFsaWRpdHkiOjAsInVzZXIiOiJhZG1pbiIsInRpbWVzdGFtcCI6MTYxMzU3MzE2OTc3MH0.fpowd7Y1MWGxQovHf7QfWOomojiQAI1AQvkDuI2yGnU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "profile",
+							"type": "file",
+							"src": "/C:/Users/Alvi/Downloads/desert.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{DNASERVER_IPHOST}}:{{DNASERVER_PORT}}/uploadfile/61a704b6daf587c224dbfc5b",
+					"host": [
+						"{{DNASERVER_IPHOST}}"
+					],
+					"port": "{{DNASERVER_PORT}}",
+					"path": [
+						"uploadfile",
+						"61a704b6daf587c224dbfc5b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "upload file with not support file",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"response status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"type of response\", function(){\r",
+							"    pm.expect(jsonData.result).to.be.a(\"string\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response body should be match!\", function () {\r",
+							"    pm.expect(pm.response.text()).to.have.include(\"This file not support!\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmaXJzdE5hbWUiOiJETkFTeW5jIiwibGFzdE5hbWUiOiJBZG1pbiIsInJvbGUiOiJTRE5BX0FkbWluVXNlciIsIm5hbWUiOiJETkFTeW5jIEFkbWluIiwiZ3JvdXBzIjpbXSwidmFsaWRpdHkiOjAsInVzZXIiOiJhZG1pbiIsInRpbWVzdGFtcCI6MTYxMzU3MzE2OTc3MH0.fpowd7Y1MWGxQovHf7QfWOomojiQAI1AQvkDuI2yGnU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "profile",
+							"type": "file",
+							"src": "/C:/Users/Alvi/Downloads/photo-1503104538136-7491acef4d5d.jfif"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{DNASERVER_IPHOST}}:{{DNASERVER_PORT}}/uploadfile/61a704b6daf587c224dbfc5b",
+					"host": [
+						"{{DNASERVER_IPHOST}}"
+					],
+					"port": "{{DNASERVER_PORT}}",
+					"path": [
+						"uploadfile",
+						"61a704b6daf587c224dbfc5b"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

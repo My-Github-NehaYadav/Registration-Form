@@ -1,0 +1,24 @@
+{
+	"id": "6d6ed2fa-8355-45e8-832f-631235993d99",
+	"name": "registration-form-test-api-env",
+	"values": [
+		{
+			"key": "AUTHORIZATION_KEY",
+			"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmaXJzdE5hbWUiOiJETkFTeW5jIiwibGFzdE5hbWUiOiJBZG1pbiIsInJvbGUiOiJTRE5BX0FkbWluVXNlciIsIm5hbWUiOiJETkFTeW5jIEFkbWluIiwiZ3JvdXBzIjpbXSwidmFsaWRpdHkiOjAsInVzZXIiOiJhZG1pbiIsInRpbWVzdGFtcCI6MTYxMzU3MzE2OTc3MH0.fpowd7Y1MWGxQovHf7QfWOomojiQAI1AQvkDuI2yGnU",
+			"enabled": true
+		},
+		{
+			"key": "DNASERVER_IPHOST",
+			"value": "localhost",
+			"enabled": true
+		},
+		{
+			"key": "DNASERVER_PORT",
+			"value": "4020",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2021-12-01T05:50:49.569Z",
+	"_postman_exported_using": "Postman/9.2.0"
+}
